@@ -22,3 +22,21 @@ Route::get('/login', function () {
 Route::get('/registo', function () {
     return view('frontoffice/registo');
 })->name('registo');
+
+
+
+Route::get('/inicio', function () {
+    return view('frontoffice/inicio');
+})->name('inicio');
+
+Route::get('/loja', function () {
+    return view('frontoffice/loja');
+})->name('loja');
+
+Route::get('/contactos', function () {
+    return view('frontoffice/contactos');
+})->name('contactos');
+
+Route::get('/perfil', function () {
+    return view('frontoffice/perfil');
+})->name('perfil');

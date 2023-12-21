@@ -1,4 +1,4 @@
-@extends('layouts.frontoffice')
+@extends('layouts.auth')
  
 {{-- @section('title', 'Page Title') --}}
  
