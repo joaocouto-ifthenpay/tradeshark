@@ -16,11 +16,11 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/login', function () {
-    return view('frontoffice/login');
+    return view('auth/login');
 })->name('login');
 
 Route::get('/registo', function () {
-    return view('frontoffice/registo');
+    return view('auth/registo');
 })->name('registo');
 
 
