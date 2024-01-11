@@ -29,9 +29,9 @@ Route::get('/inicio', function () {
     return view('frontoffice/inicio');
 })->name('inicio');
 
-Route::get('/loja', function () {
-    return view('frontoffice/loja');
-})->name('loja');
+// Route::get('/loja', function () {
+//     return view('frontoffice/loja');
+// })->name('loja');
 
 Route::get('/contactos', function () {
     return view('frontoffice/contactos');
@@ -40,3 +40,9 @@ Route::get('/contactos', function () {
 Route::get('/perfil', function () {
     return view('frontoffice/perfil');
 })->name('perfil');
+
+
+
+Route::get('/item', [App\Http\Controllers\ItemController::class, 'index']);
+
+Route::get('/loja', [App\Http\Controllers\LojaController::class, 'index'])->name('loja');

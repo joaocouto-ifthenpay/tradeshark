@@ -13,6 +13,27 @@
         <!-- ...................... -->
         <h1 class="product-card_tit">Mais vendidos</h1>
         <div class="geral_product-card">
+
+            @foreach ($items as $item)
+            <div class="product-card">
+                <div class="product-tumb">
+                    <img src="assets/PANEL_FACHADA_FIJACIONES_OCULTAS.png" alt="">
+                </div>
+                <div class="product-details">
+                    <span class="product-catagory">Obras</span>
+                    <h4><a href="">{{ $item->item_name }}</a></h4>
+                    <p>{{ $item->description }}</p>
+                    <div class="product-bottom-details">
+                        <div class="product-price"><small>2.560€</small>{{ $item->price }}</div>
+                        <div class="product-links">
+                            <a href=""><i class="fa fa-heart"></i></a>
+                            <a href=""><i class="fa fa-shopping-cart"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+{{-- 
             <div class="product-card">
                 <div class="product-tumb">
                     <img src="assets/PANEL_FACHADA_FIJACIONES_OCULTAS.png" alt="">
@@ -157,7 +178,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
 
         <!-- ......... -->
@@ -177,7 +198,7 @@
         <!-- ......... -->
         <!-- Novidades -->
         <!-- ......... -->
-        <h1 class="product-card_tit">Novidadess</h1>
+        <h1 class="product-card_tit">Novidades</h1>
         <div class="info-container">
             <div class="info-card">
                 <div class="info-img-box">
