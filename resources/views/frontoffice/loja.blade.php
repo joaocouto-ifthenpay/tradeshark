@@ -22,7 +22,7 @@
                 <div class="product-details">
                     <span class="product-catagory">Obras</span>
                     <h4><a href="">{{ $item->item_name }}</a></h4>
-                    <p>{{ $item->description }}</p>
+                    <p>{{ Str::limit($item->description, 25) }}</p>
                     <div class="product-bottom-details">
                         <div class="product-price"><small>2.560€</small>{{ $item->price }}</div>
                         <div class="product-links">
@@ -33,6 +33,7 @@
                 </div>
             </div>
             @endforeach
+
 {{-- 
             <div class="product-card">
                 <div class="product-tumb">
@@ -186,14 +187,10 @@
         <!-- ......... -->
         <div class="pagination-container">
             <div class="pagination">
-                <a href="#"><i class="fas fa-step-backward"></i></a>
-                <a href="#" class="active">1</a>
-                <a href="#">2</a>
-                <a href="#">3</a>
-                <a href="#"><i class="fas fa-chevron-right"></i></a>
-                <a href="#"><i class="fas fa-step-forward"></i></a>
+                {{ $items->links('custom.pagination') }}
             </div>
         </div>
+
 
         <!-- ......... -->
         <!-- Novidades -->
