@@ -15,9 +15,21 @@ class LojaController extends Controller
     public function index()
     {
         // $items = Item::all(); // Recupera todos os itens da tabela
-        $items = Item::paginate(2);
+        $items = Item::paginate(8);
 
         return view('frontoffice/loja', ['items' => $items]);
+    }
+
+    /**
+     * Details
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function details($id)
+    {
+        $item = Item::where('id', $id)->first();
+
+        return view('frontoffice/details', compact('item'));
     }
 
     /**

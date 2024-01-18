@@ -17,11 +17,11 @@
             @foreach ($items as $item)
             <div class="product-card">
                 <div class="product-tumb">
-                    <img src="assets/PANEL_FACHADA_FIJACIONES_OCULTAS.png" alt="">
+                    <img src="{{ asset('assets/PANEL_FACHADA_FIJACIONES_OCULTAS.png') }}" alt="">
                 </div>
                 <div class="product-details">
                     <span class="product-catagory">Obras</span>
-                    <h4><a href="">{{ $item->item_name }}</a></h4>
+                    <h4><a href="{{ route('loja.details', $item->id) }}">{{ $item->item_name }}</a></h4>
                     <p>{{ Str::limit($item->description, 25) }}</p>
                     <div class="product-bottom-details">
                         <div class="product-price"><small>2.560€</small>{{ $item->price }}</div>
@@ -34,152 +34,6 @@
             </div>
             @endforeach
 
-{{-- 
-            <div class="product-card">
-                <div class="product-tumb">
-                    <img src="assets/PANEL_FACHADA_FIJACIONES_OCULTAS.png" alt="">
-                </div>
-                <div class="product-details">
-                    <span class="product-catagory">Obras</span>
-                    <h4><a href="">Título</a></h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero, possimus nostrum!</p>
-                    <div class="product-bottom-details">
-                        <div class="product-price"><small>2.560€</small>1.780€</div>
-                        <div class="product-links">
-                            <a href=""><i class="fa fa-heart"></i></a>
-                            <a href=""><i class="fa fa-shopping-cart"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="product-tumb">
-                    <img src="assets/Bobina-1-1-1024x1024.png" alt="">
-                </div>
-                <div class="product-details">
-                    <span class="product-catagory">Obras</span>
-                    <h4><a href="">Título</a></h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero, possimus nostrum!</p>
-                    <div class="product-bottom-details">
-                        <div class="product-price"><small>2.560€</small>1.780€</div>
-                        <div class="product-links">
-                            <a href=""><i class="fa fa-heart"></i></a>
-                            <a href=""><i class="fa fa-shopping-cart"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="product-tumb">
-                    <img src="assets/cimento-cimpor.png" alt="">
-                </div>
-                <div class="product-details">
-                    <span class="product-catagory">Obras</span>
-                    <h4><a href="">Título</a></h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero, possimus nostrum!</p>
-                    <div class="product-bottom-details">
-                        <div class="product-price"><small>2.560€</small>1.780€</div>
-                        <div class="product-links">
-                            <a href=""><i class="fa fa-heart"></i></a>
-                            <a href=""><i class="fa fa-shopping-cart"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="product-tumb">
-                    <img src="assets/blocos-de-Concreto.png.png" alt="">
-                </div>
-                <div class="product-details">
-                    <span class="product-catagory">Obras</span>
-                    <h4><a href="">Título</a></h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero, possimus nostrum!</p>
-                    <div class="product-bottom-details">
-                        <div class="product-price"><small>2.560€</small>1.780€</div>
-                        <div class="product-links">
-                            <a href=""><i class="fa fa-heart"></i></a>
-                            <a href=""><i class="fa fa-shopping-cart"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div style="margin-bottom: 20px;" class="geral_product-card">
-            <div class="product-card">
-                <div class="product-tumb">
-                    <img src="assets/Tinta-Plastica-Supercryl-1.png" alt="">
-                </div>
-                <div class="product-details">
-                    <span class="product-catagory">Obras</span>
-                    <h4><a href="">Título</a></h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero, possimus nostrum!</p>
-                    <div class="product-bottom-details">
-                        <div class="product-price"><small>2.560€</small>1.780€</div>
-                        <div class="product-links">
-                            <a href=""><i class="fa fa-heart"></i></a>
-                            <a href=""><i class="fa fa-shopping-cart"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="product-tumb">
-                    <img src="assets/tijolo.png" alt="">
-                </div>
-                <div class="product-details">
-                    <span class="product-catagory">Obras</span>
-                    <h4><a href="">Título</a></h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero, possimus nostrum!</p>
-                    <div class="product-bottom-details">
-                        <div class="product-price"><small>2.560€</small>1.780€</div>
-                        <div class="product-links">
-                            <a href=""><i class="fa fa-heart"></i></a>
-                            <a href=""><i class="fa fa-shopping-cart"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="product-tumb">
-                    <img src="assets/pladur-n.png" alt="">
-                </div>
-                <div class="product-details">
-                    <span class="product-catagory">Obras</span>
-                    <h4><a href="">Título</a></h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero, possimus nostrum!</p>
-                    <div class="product-bottom-details">
-                        <div class="product-price"><small>2.560€</small>1.780€</div>
-                        <div class="product-links">
-                            <a href=""><i class="fa fa-heart"></i></a>
-                            <a href=""><i class="fa fa-shopping-cart"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="product-tumb">
-                    <img src="assets/3-7.png" alt="">
-                </div>
-                <div class="product-details">
-                    <span class="product-catagory">Obras</span>
-                    <h4><a href="">Título</a></h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero, possimus nostrum!</p>
-                    <div class="product-bottom-details">
-                        <div class="product-price"><small>2.560€</small>1.780€</div>
-                        <div class="product-links">
-                            <a href=""><i class="fa fa-heart"></i></a>
-                            <a href=""><i class="fa fa-shopping-cart"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div> --}}
         </div>
 
         <!-- ......... -->
