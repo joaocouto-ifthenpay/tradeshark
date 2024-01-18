@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\LojaController;
+use App\Http\Controllers\ItemController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,7 +42,10 @@ Route::get('/perfil', function () {
 
 
 
-Route::get('/item', [App\Http\Controllers\ItemController::class, 'index']);
+Route::get('/item', [ItemController::class, 'index']);
 
-Route::get('/loja', [App\Http\Controllers\LojaController::class, 'index'])->name('loja.index');
-Route::get('/item/{id}', [App\Http\Controllers\LojaController::class, 'details'])->name('loja.details');
+Route::get('/loja', [LojaController::class, 'index'])->name('loja.index');
+Route::get('/item/{id}', [LojaController::class, 'details'])->name('loja.details');
+
+Route::get('/cart', [CartController::class, 'getCart'])->name('loja.cart');
+Route::post('/cart', [CartController::class, 'addCart'])->name('loja.cart.add');
