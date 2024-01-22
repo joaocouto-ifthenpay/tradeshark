@@ -8,13 +8,13 @@
         <h1 class="product-card_tit">Contactos</h1>
         <form class="contact-form">
             <div class="form-group">
-                <input type="text" id="nome" placeholder="Nome*" name="nome" required>
+                <input type="text" class="input-text" id="nome" placeholder="Nome*" name="nome" required>
             </div>
             <div class="form-group">
-                <input type="email" id="email" placeholder="Email*" name="email" required>
+                <input type="email" class="input-email" id="email" placeholder="Email*" name="email" required>
             </div>
             <div class="form-group">
-                <input type="text" id="contacto" placeholder="Contacto*" name="contacto" required>
+                <input type="text" class="input-text" id="contacto" placeholder="Contacto*" name="contacto" required>
             </div>
             <div class="form-group">
                 <select class="contactos-selecione" id="assunto" name="assunto" required>

@@ -31,8 +31,7 @@
     height: 45px;
 }
 
-input[type="text"],
-input[type="email"],
+.form-input--text,
 select,
 textarea {
     width: 100%;

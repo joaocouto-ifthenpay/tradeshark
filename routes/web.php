@@ -40,6 +40,11 @@ Route::get('/perfil', function () {
     return view('frontoffice/perfil');
 })->name('perfil');
 
+Route::get('/checkout', function () {
+    return view('frontoffice/checkout');
+})->name('checkout');
+
+
 
 
 Route::get('/item', [ItemController::class, 'index']);

@@ -63,6 +63,7 @@ p {
     transition: var(--transition);
     border-radius: 10px;
     box-shadow: var(--shadow-card);
+    width: 100% !important;
 }
 
 .article-img {
@@ -146,7 +147,7 @@ small {
 
 .add-to-cart,
 .buy-now {
-    padding: 10px 30px;
+    padding: 10px 48px;
     font-size: 18px;
     color: white;
     border: none;
@@ -255,8 +256,7 @@ small {
 }
 
 .specs-container {
-    overflow-x: auto;
-    /* Adiciona barra de rolagem horizontal se necessário */
+    overflow-x: auto; /* Adiciona barra de rolagem horizontal se necessário */
 }
 
 .specs-table {
@@ -274,6 +274,5 @@ small {
 }
 
 .specs-table tr:last-child td {
-    border-bottom: none;
-    /* Remove a borda inferior da última linha */
+    border-bottom: none; /* Remove a borda inferior da última linha */
 }

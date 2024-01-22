@@ -35,8 +35,8 @@ label {
     margin-bottom: 5px;
 }
 
-input[type="text"],
-input[type="email"],
+.input-text,
+.input-email,
 select,
 textarea {
     width: 100%;
@@ -84,30 +84,31 @@ button:hover {
 
 .info-block {
     width: 45%;
+    height: 100%;
     background-color: #85c9e3;
     text-align: center;
     color: #fff;
-    padding: 20px;
+    padding: 15px;
     border-radius: 10px;
 }
 
 .info-icon {
     text-align: center;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 .info-icon i {
-    font-size: 40px;
+    font-size: 30px;
 }
 
 .info-contact {
     font-weight: 500;
-    font-size: 35px;
+    font-size: 23px;
     margin-bottom: 5px;
 }
 
 .info-departments {
-    font-size: 20px;
+    font-size: 15px;
     margin-bottom: 5px;
     line-height: normal;
 }

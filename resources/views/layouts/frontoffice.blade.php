@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
     <link rel="stylesheet" href="{{ asset('css/loja.css') }}">
     <link rel="stylesheet" href="{{ asset('css/artigo.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/checkout.css') }}">
     <link rel="stylesheet" href="{{ asset('css/contactos.css') }}">
     <link rel="icon" href="{{ asset('assets/LOGO2.png') }}">
 </head>
@@ -31,50 +32,92 @@
             <a href={{ route('inicio') }}>
                 <img src="{{ asset('assets/logo.svg') }}" alt="TradeShark" class="logo">
             </a>
-            <ul class="main-menu">
+            <input type="text" class="search-bar" placeholder="Encontre tudo na Trade Shark">
+            {{-- <ul class="main-menu">
                 <li><a href={{ route('inicio') }}>Início</a></li>
                 <li><a href={{ route('loja.index') }}>Loja</a></li>
                 <li><a href={{ route('contactos') }}>Contactos</a></li>
-            </ul>
+            </ul> --}}
 
-            <!-- Icon do utilizador -->
-            <div class="dropdown">
-                <button class="dropdown-btn">
-                    <a class="dropdown-icon" href="#"><i class="fas fa-user-circle"></i></a>
-                </button>
-                <div class="dropdown-content">
-                    <a href={{ route('perfil') }}>Perfil</a>
-                    <a href="#">Configurações</a>
-                    <a href={{ route('login') }}>Sair</a>
+            <div class="icons">
+                <!-- Icon do utilizador -->
+                <div class="dropdown">
+                    <button class="dropdown-btn">
+                        <a class="dropdown-icon" href="#"><i class="fas fa-user-circle"></i></a>
+                    </button>
+                    <div class="dropdown-content">
+                        <a href={{ route('perfil') }}>Perfil</a>
+                        <a href="#">Configurações</a>
+                        <a href={{ route('login') }}>Sair</a>
+                    </div>
                 </div>
+
+                <!--Bt de trocar de ligh para dark mode-->
+                <div class="switch">
+                    <div class="sol">
+                        <i class="fas fa-sun"></i>
+                    </div>
+                    <span class="switch_track"></span>
+                    <div class="lua">
+                        <i class="fas fa-moon"></i>
+                    </div>
+                </div>
+
+                <ul class="right-menu">
+                    <li>
+                        <a href="#" id="cart">
+                            <text onclick=toggleCart() class="fa fa-shopping-cart">
+                        </a>
+                    </li>
+                </ul>
+    
             </div>
+          </nav>
 
-            <!--Bt de trocar de ligh para dark mode-->
-            <div class="switch">
-                <div class="lua">
-                    <i class="fas fa-sun"></i>
+          <div class="container-dropdown">
+            <div class="shopping-cart">
+              <div class="shopping-cart-header">
+                <i class="fa fa-shopping-cart cart-icon"></i>
+                <div class="shopping-cart-total">
+                  <span class="lighter-text">Total:</span>
+                  <span class="main-color-text">2.229,97€</span>
                 </div>
-                <span class="switch_track"></span>
-                <div class="sol">
-                    <i class="fas fa-moon"></i>
-                </div>
-
-            </div>
-
-            <ul class="right-menu">
-                <li>
-                    <a href="#">
-                        <i class="fas fa-search"></i>
-                    </a>
+              </div> <!--end shopping-cart-header -->
+          
+              <ul class="shopping-cart-items">
+                <li class="clearfix">
+                  <img src="assets/PANEL_FACHADA_FIJACIONES_OCULTAS.png" alt="item1" />
+                  <span class="item-name">Pav. Flutuante</span>
+                  <span class="item-price">849,99€</span>
+                  <span class="item-quantity">Quantidade: 01</span>
                 </li>
-                <li>
-                    <a href="#">
-                        <i class="fas fa-shopping-cart"></i>
-                    </a>
+          
+                <li class="clearfix">
+                  <img src="assets/Tinta-Plastica-Supercryl-1.png" alt="item1" />
+                  <span class="item-name">Tintas de cor</span>
+                  <span class="item-price">1.249,99€</span>
+                  <span class="item-quantity">Quantidade: 01</span>
                 </li>
+          
+                <li class="clearfix">
+                  <img src="assets/cimento-cimpor.png" alt="item1" />
+                  <span class="item-name">Cimento</span>
+                  <span class="item-price">129,99€</span>
+                  <span class="item-quantity">Quantidade: 01</span>
+                </li>
+              </ul>
+          
+              <a href={{ route('checkout') }} class="button">Checkout</a>
+            </div> <!--end shopping-cart -->
+          </div>
+    
+          <div class="bottom-bar">
+            <ul class="main-menu">
+              <li><a href={{ route('inicio') }}>Início</a></li>
+              <li><a href={{ route('loja.index') }}>Loja</a></li>
+              <li><a href={{ route('contactos') }}>Contactos</a></li>
             </ul>
-        </nav>
-
+          </div>
 
         @yield('content')
 
@@ -139,6 +182,7 @@
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
 </body>
 
 </html>
