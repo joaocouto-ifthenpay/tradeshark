@@ -8,27 +8,27 @@
     <h1 style="margin-top: 80px;" class="product-card_tit">Os meus dados</h1>
     <div class="form-container">
       <div class="form-section">
-        <form class="contact-form">
+        <form class="contact-form" method="POST" action="{{route('perfil')}}">
           <div class="form-group">
-            <input type="text" id="nome" placeholder="Nome" name="nome" required>
+            <input type="text" class="form-input--text" id="nome" placeholder="Nome" name="nome" value={{auth()->user()->name}} required>
           </div>
           <div class="form-group">
-            <input type="text" id="email" placeholder="Email" name="email" required>
+            <input type="text" class="form-input--text" id="email" placeholder="Email" name="email" value={{auth()->user()->email}} required>
           </div>
-          <div class="form-group">
+          {{-- <div class="form-group">
             <input type="text" id="senha" placeholder="Palavra-passe" name="senha" required>
+          </div> --}}
+          <div class="form-group">
+            <input type="text" class="form-input--text" id="telefone" placeholder="Telefone" name="telefone">
           </div>
           <div class="form-group">
-            <input type="text" id="telefone" placeholder="Telefone" name="telefone">
+            <input type="text" class="form-input--text" id="pais" placeholder="País" name="pais">
           </div>
           <div class="form-group">
-            <input type="text" id="pais" placeholder="País" name="pais">
+            <input type="text" class="form-input--text" id="nif" placeholder="NIF" name="nif">
           </div>
           <div class="form-group">
-            <input type="text" id="nif" placeholder="NIF" name="nif">
-          </div>
-          <div class="form-group">
-            <input type="text" id="iban" placeholder="IBAN" name="iban">
+            <input type="text" class="form-input--text" id="iban" placeholder="IBAN" name="iban">
           </div>
         </form>
       </div>

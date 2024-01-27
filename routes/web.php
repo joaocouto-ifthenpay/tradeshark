@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\LojaController;
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,13 +20,10 @@ use App\Http\Controllers\ItemController;
 
 
 
-Route::get('/login', function () {
-    return view('auth/login');
-})->name('login');
 
-Route::get('/registo', function () {
-    return view('auth/registo');
-})->name('registo');
+Route::get('/register', function () {
+    return view('auth/register');
+})->name('register');
 
 
 
@@ -46,6 +45,11 @@ Route::get('/checkout', function () {
 
 
 
+Route::resource('user', UserController::class);
+
+Route::view('/login', 'auth.login')->name('login.form');
+Route::post('/auth', [LoginController::class, 'auth'])->name('login.auth');
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get('/item', [ItemController::class, 'index']);
 

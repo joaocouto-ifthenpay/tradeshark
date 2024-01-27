@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="{{ asset('css/artigo.css') }}">
     <link rel="stylesheet" href="{{ asset('css/checkout.css') }}">
     <link rel="stylesheet" href="{{ asset('css/contactos.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/perfil.css') }}">
     <link rel="icon" href="{{ asset('assets/LOGO2.png') }}">
 </head>
 
@@ -48,7 +49,7 @@
                     <div class="dropdown-content">
                         <a href={{ route('perfil') }}>Perfil</a>
                         <a href="#">Configurações</a>
-                        <a href={{ route('login') }}>Sair</a>
+                        <a href={{ route('logout') }}>Sair</a>
                     </div>
                 </div>
 

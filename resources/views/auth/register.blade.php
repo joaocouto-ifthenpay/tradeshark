@@ -15,13 +15,15 @@
             <img class="form-geral_logo" src="assets/LOGO2.png">
         </div>
 
-        <form method="POST" action="php/registo.php">
+        <form method="POST" action="{{route('user.store')}}">
+            @csrf
             <h2 class="form-geral_titulo">Faz aqui o teu registo</h2>
-            <input type="text" name="login" placeholder="Nome de utilizador" autofocus id="login">
-            <input type="password" name="senha" placeholder="Password" id="senha">
+            <input type="text" name="name" placeholder="Nome Completo" autofocus id="name">
+            <input type="email" name="email" placeholder="Email" autofocus id="login">
+            <input type="password" name="password" placeholder="Password" id="senha">
             <input type="submit" name="registar" value="Registar" id="registar">
         </form>
-        <p>Voltar para o<a href={{ route('login') }}> <strong>login</strong></a>?</p>
+        <p>Voltar para o<a href={{ route('login.form') }}> <strong>login</strong></a>?</p>
 
     </div>
   </section>
