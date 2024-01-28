@@ -17,7 +17,7 @@
             @foreach ($items as $item)
             <div class="product-card">
                 <div class="product-tumb">
-                    <img src="{{ asset('assets/PANEL_FACHADA_FIJACIONES_OCULTAS.png') }}" alt="">
+                    <img src="{{ asset('assets/' . $item->image_url) }}" alt="">
                 </div>
                 <div class="product-details">
                     <span class="product-catagory">Obras</span>

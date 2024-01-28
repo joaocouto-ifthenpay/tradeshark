@@ -22,8 +22,162 @@
 
 
         <section id="content1" class="tab-content">
-          <h3>Itens do carrinho</h3>
-          <p></p>
+          <h3>Itens do carrinho ({{$items->count()}} itens)</h3>
+          {{-- <p>
+            
+            <div>
+              <div class="shopping-cart-header">
+                <i class="fa fa-shopping-cart cart-icon"></i>
+                <div class="shopping-cart-total">
+                  <span class="lighter-text">Total:</span>
+                  <span class="main-color-text">2.229,97€</span>
+                </div>
+              </div> <!--end shopping-cart-header -->
+          
+              <ul class="shopping-cart-items">
+                <li class="clearfix">
+                  <img src="assets/PANEL_FACHADA_FIJACIONES_OCULTAS.png" alt="item1" />
+                  <span class="item-name">Pav. Flutuante</span>
+                  <span class="item-price">849,99€</span>
+                  <span class="item-quantity">Quantidade: 01</span>
+                </li>
+          
+                <li class="clearfix">
+                  <img src="assets/Tinta-Plastica-Supercryl-1.png" alt="item1" />
+                  <span class="item-name">Tintas de cor</span>
+                  <span class="item-price">1.249,99€</span>
+                  <span class="item-quantity">Quantidade: 01</span>
+                </li>
+          
+                <li class="clearfix">
+                  <img src="assets/cimento-cimpor.png" alt="item1" />
+                  <span class="item-name">Cimento</span>
+                  <span class="item-price">129,99€</span>
+                  <span class="item-quantity">Quantidade: 01</span>
+                </li>
+              </ul>
+          
+              <a href={{ route('checkout') }} class="button">Avançar</a>
+            </div> <!--end shopping-cart -->
+          </p> --}}
+
+
+          <form action="" method="post">
+                  
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                    <th></th>
+                    <th>Nome</th>
+                    <th>Preço</th>
+                    <th>Quantidade</th>
+                    <th>Ações</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                @foreach ($items as $item)
+                <tr>
+                  <td><img src="{{ asset('assets/' . $item->attributes->image) }}" width="70" class="responsive-img circle"></td>
+                  <td>{{$item->name}}</td>
+                  <td>{{$item->price}}</td>
+                  <td><input type="number" name="quantity" value="{{$item->quantity}}"></td>
+                  <td>
+                    <button class="btn-floating waves-effect waves-light red"><i class="material-icons">refresh</i></button>
+                    <button class="btn-floating waves-effect waves-light red"><i class="material-icons">delete</i></button>
+                  </td>
+                </tr>
+                @endforeach
+              </tbody>
+            </table>
+            
+            {{-- <div class="pymt-radio">
+
+
+              <div class="row-payment-method payment-row">
+                <div class="select-icon">
+                  <input type="radio" id="radio1" name="radios" value="pp">
+                  <label for="radio1"></label>
+                </div>
+                <div class="select-txt">
+                  <p class="pymt-type-name">Paypal</p>
+                  <p class="pymt-type-desc">Pagamento seguro em linha. É necessário um cartão de crédito. Não é necessária uma conta PayPal.</p>
+                </div>
+                <div class="select-logo">
+                  <img src="{{ asset('assets/png/logo-paypal.png') }}" alt="PayPal"/>
+                </div>
+
+              </div>
+
+            </div>
+            <div class="pymt-radio">
+
+              <div class="row-payment-method payment-row-last">
+                <div class="select-icon hr">
+                  <input type="radio" id="radio2" name="radios" value="pp" checked>
+                  <label for="radio2"></label>
+                </div>
+                <div class="select-txt hr">
+                  <p class="pymt-type-name">Cartão de crédito</p>
+                  <p class="pymt-type-desc">Transferência segura de dinheiro utilizando a sua conta bancária. Pagamento seguro online. Cartão de crédito necessário. Visa, Maestro, Discover, American Express.</p>                
+                </div>
+                <div class="select-logo">
+                  <div class="select-logo-sub logo-spacer">
+                    <img src="{{ asset('assets/png/logo-visa.png') }}" alt="Visa"/>
+                  </div>
+                  <div class="select-logo-sub">
+                    <img src="{{ asset('assets/png/logo-mastercard.png') }}" alt="MasterCard"/></div>
+                </div>
+
+              </div>
+            </div>
+            <div class="form-cc">
+              <div class="row-cc">
+                <div class="cc-field">
+                  <div class="cc-title">Número do cartão de crédito
+                  </div>
+                  <input type="text" class="input cc-txt text-validated" value="4542 9931 9292 2293" />
+                </div>
+              </div>
+              <div class="row-cc">
+                <div class="cc-field">
+                  <div class="cc-title">Data de validade
+                  </div>
+                  <select class="input cc-ddl">
+                    <option selected>01</option>
+                    <option>02</option>
+                    <option>03</option>
+                    <option>12</option>          
+                  </select>
+                  <select class="input cc-ddl">
+                    <option>01</option>
+                    <option>02</option>
+                    <option>30</option>
+                    <option>31</option>            
+                  </select>
+                </div>
+                <div class="cc-field">
+                  <div class="cc-title">CVV<span class="numberCircle">?</span>
+                  </div>
+                  <input type="text" class="input cc-txt"/>
+                </div>
+              </div>
+              <div class="row-cc">
+                <div class="cc-field">
+                  <div class="cc-title">Nome do cartão
+                  </div>
+                  <input type="text" class="input cc-txt"/>
+                </div>
+              </div>    
+
+            </div> --}}
+            <div class="button-master-container">
+              <div class="button-container"><a href={{ route('loja.index') }}>Voltar às compras</a>
+              </div>
+              <div class="button-container button-finish"><a href="#">Finalizar pedido</a>
+              </div>
+            </div>
+          </form>
         </section>
 
         <section id="content2" class="tab-content">

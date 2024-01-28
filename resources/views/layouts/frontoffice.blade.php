@@ -41,7 +41,7 @@
             </ul> --}}
 
             <div class="icons">
-                <!-- Icon do utilizador -->
+                @auth
                 <div class="dropdown">
                     <button class="dropdown-btn">
                         <a class="dropdown-icon" href="#"><i class="fas fa-user-circle"></i></a>
@@ -52,6 +52,7 @@
                         <a href={{ route('logout') }}>Sair</a>
                     </div>
                 </div>
+                @endauth
 
                 <!--Bt de trocar de ligh para dark mode-->
                 <div class="switch">
@@ -108,7 +109,7 @@
                 </li>
               </ul>
           
-              <a href={{ route('checkout') }} class="button">Checkout</a>
+              <a href={{ route('loja.cart') }} class="button">Checkout</a>
             </div> <!--end shopping-cart -->
           </div>
     

@@ -27,7 +27,7 @@
         <!-- Navbar -->
         <!-- ...... -->
         <nav class="main-nav">
-            <a href="index.html">
+            <a href={{ route('inicio') }}>
                 <img src="assets/logo.svg" alt="TradeShark" class="logo">
             </a>
             <!--Bt de trocar de ligh para dark mode-->

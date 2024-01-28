@@ -10,7 +10,8 @@ class CartController extends Controller
     public function getCart()
     {
         $items = Cart::getContent();
-        dd($items);
+        // dd($items);
+        return view('frontoffice/checkout', compact('items'));
     }
 
     public function addCart(Request $request)
@@ -24,5 +25,7 @@ class CartController extends Controller
                 'image' => $request->image
             ]
         ]);
+
+        return redirect()->route('loja.cart')->with('sucesso', 'Producto adicionado ao carrinho com sucesso');
     }
 }
