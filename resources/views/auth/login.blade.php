@@ -9,21 +9,27 @@
 @endsection --}}
  
 @section('content')
+
+    @if($msg = Session::get('error'))
+    <div class="alert alert-danger" role="alert">
+      {{$msg}}
+    </div>
+    @endif
+
+    @if($errors->any())
+      @foreach($errors->all() as $error)
+          {{$error}} <br>
+      @endforeach
+    @endif
+
+
     <section class="form-geral">
+    
         <div class="form-geral_campos">
+
           <div>
             <img class="form-geral_logo" src="assets/LOGO2.png">
           </div>
-
-          @if($msg = Session::get('error'))
-            {{ $msg }}
-          @endif
-
-          @if($errors->any())
-            @foreach($errors->all() as $error)
-                {{$error}} <br>
-            @endforeach
-          @endif
 
           <form method="POST" action="{{route('login.auth')}}">
             @csrf

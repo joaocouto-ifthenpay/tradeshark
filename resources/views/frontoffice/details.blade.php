@@ -1,18 +1,27 @@
 @extends('layouts.frontoffice')
 
 @section('content')
-
+        @if ($msg = Session::get('success'))
+        <div class="alert alert-success" role="alert">
+          {{$msg}}
+        </div>
+        @endif
+        @if ($msg = Session::get('info'))
+        <div class="alert alert-info" role="alert">
+          {{$msg}}
+        </div>
+        @endif
         <!-- ....... -->
         <!-- Produto -->
         <!-- ....... -->
         <div class="container">
             <div class="article">
               <div class="article-img">
-                <img class="article-img--main" src="{{ asset('assets/pavimento.jpg') }}" alt="">
+                <img class="article-img--main" src="{{ asset('assets/' . $item->image_url) }}" alt="">
                 <div class="additional-images">
-                    <img src="{{ asset('assets/pavimento.jpg') }}" alt="">
-                    <img src="{{ asset('assets/pavimento.jpg') }}" alt="">
-                    <img src="{{ asset('assets/pavimento.jpg') }}" alt="">
+                    <img src="{{ asset('assets/' . $item->image_url) }}" alt="">
+                    <img src="{{ asset('assets/' . $item->image_url) }}" alt="">
+                    <img src="{{ asset('assets/' . $item->image_url) }}" alt="">
                 </div>
               </div>
               <div class="article-info">
@@ -29,7 +38,7 @@
                     <input type="hidden" name="image" value="{{$item->image_url}}">
                     <p>
                       <button class="add-to-cart"><i class="fas fa-shopping-cart"></i> Adicionar</button>
-                      <button class="buy-now">Comprar Já</button>
+                      <button class="buy-now" name="action" value="buy-now">Comprar Já</button>
                     </p>
                   </form>
                 </div>

@@ -65,18 +65,17 @@
                   <td>{{$c->price}}</td>
                   {{-- UPDATE --}}
                   <form action="{{route('loja.updateCart')}}" method="POST" enctype="multipart/form-data">
-                    <td width="20%"><input type="number" name="quantity" value="{{$c->quantity}}" class="form-control mr-2 quantity-input"></td>
-                    <td width="20%">
+                  <td width="20%"><input type="number" name="quantity" value="{{$c->quantity}}" class="form-control mr-2 quantity-input"></td>
+                  <td width="20%">
                       @csrf
                       <input type="hidden" name="id" value="{{$c->id}}">
-                      <button type="button" class="btn btn-primary btn-sm"><i class="material-icons">Atualizar</i></button>
+                      <button class="btn-floating waves-effect waves-light red">Atualizar</button>
                   </form>
                   {{-- REMOVE --}}
-                  <form action="{{route('loja.removeCart')}}" method="POST" enctype="multipart/form-data">
+                    <form action="{{route('loja.removeCart')}}" method="POST" enctype="multipart/form-data">
                       @csrf
                       <input type="hidden" name="id" value="{{$c->id}}">
-                      <button type="button" class="btn btn-secondary btn-sm">
-                        <i class="bi bi-trash">Limpar</i></button>
+                      <button class="btn-floating waves-effect waves-light red"><i class="material-icons">Limpar</i></button>
                     </form>
                   </td>
                 </tr>
@@ -108,13 +107,14 @@
 
         <section id="content4" class="tab-content">
           <h4 class="payment-title">Escolha o seu método de pagamento</h4>
-          <form action="" method="post">
+          <form action="{{route('loja.addOrder')}}" method="POST" enctype="multipart/form-data">
+            @csrf
             <div class="pymt-radio">
 
 
               <div class="row-payment-method payment-row">
                 <div class="select-icon">
-                  <input type="radio" id="radio1" name="radios" value="pp">
+                  <input type="radio" id="radio1" name="radios" value="paypal">
                   <label for="radio1"></label>
                 </div>
                 <div class="select-txt">
@@ -132,7 +132,7 @@
 
               <div class="row-payment-method payment-row-last">
                 <div class="select-icon hr">
-                  <input type="radio" id="radio2" name="radios" value="pp" checked>
+                  <input type="radio" id="radio2" name="radios" value="creditCard" checked>
                   <label for="radio2"></label>
                 </div>
                 <div class="select-txt hr">
@@ -150,87 +150,21 @@
               </div>
             </div>
             <div class="form-cc">
-              <div class="row-cc">
-                <div class="cc-field">
-                  <div class="cc-title">Número do cartão de crédito
+              
+                    @foreach ($cart as $c)
+                      <input type="hidden" name="orderId" value="{{$c->id}}">
+                      <input type="hidden" name="name" value="{{$c->name}}">
+                      <input type="hidden" name="price" value="{{$c->price}}">
+                      
+                    @endforeach
+                
+                <div class="button-master-container">
+                  <div class="button-container"><a href={{ route('loja.index') }}>Voltar às compras</a>
                   </div>
-                  <input type="text" class="input cc-txt text-validated" value="4542 9931 9292 2293" />
-                </div>
-              </div>
-              <div class="row-cc">
-                <div class="cc-field">
-                  <div class="cc-title">Data de validade
+                  <div class="button-container button-finish"><button name="action">Finalizar pedido</button>
                   </div>
-                  <select class="input cc-ddl">
-                    <option selected>01</option>
-                    <option>02</option>
-                    <option>03</option>
-                    <option>04</option>
-                    <option>05</option>
-                    <option>06</option>
-                    <option>07</option>
-                    <option>08</option>
-                    <option>09</option>
-                    <option>10</option>
-                    <option>11</option>
-                    <option>12</option>          
-                  </select>
-                  <select class="input cc-ddl">
-                    <option>01</option>
-                    <option>02</option>
-                    <option>03</option>
-                    <option>04</option>
-                    <option>05</option>
-                    <option>06</option>
-                    <option>07</option>
-                    <option>08</option>
-                    <option>09</option>
-                    <option>10</option>
-                    <option>11</option>
-                    <option>12</option>
-                    <option>13</option>
-                    <option>14</option>
-                    <option>15</option>
-                    <option selected>16</option>
-                    <option>17</option>
-                    <option>18</option>
-                    <option>19</option>
-                    <option>20</option>
-                    <option>21</option>
-                    <option>22</option>
-                    <option>23</option>
-                    <option>24</option>
-                    <option>25</option>
-                    <option>26</option>
-                    <option>27</option>
-                    <option>28</option>
-                    <option>29</option>
-                    <option>30</option>
-                    <option>31</option>            
-                  </select>
                 </div>
-                <div class="cc-field">
-                  <div class="cc-title">CVV<span class="numberCircle">?</span>
-                  </div>
-                  <input type="text" class="input cc-txt"/>
-                </div>
-              </div>
-              <div class="row-cc">
-                <div class="cc-field">
-                  <div class="cc-title">Nome do cartão
-                  </div>
-                  <input type="text" class="input cc-txt"/>
-                </div>
-              </div>    
-
-            </div>
-            <div class="button-master-container">
-              <div class="button-container"><a href={{ route('loja.index') }}>Voltar às compras</a>
-              </div>
-              <div class="button-container button-finish"><a href="#">Finalizar pedido</a>
-              </div>
-            </div>
-          </form>
+              </form>
         </section>
         
       </div>

@@ -24,7 +24,10 @@
                     <h4><a href="{{ route('loja.details', $item->id) }}">{{ $item->item_name }}</a></h4>
                     <p>{{ Str::limit($item->description, 25) }}</p>
                     <div class="product-bottom-details">
-                        <div class="product-price"><small>2.560€</small>{{ number_format($item->price,2,',','.') }}€</div>
+                        <div class="product-price">
+                            {{-- <small>2.560€</small> --}}
+                            {{ number_format($item->price,2,',','.') }}€
+                        </div>
                         <div class="product-links">
                             <a href=""><i class="fa fa-heart"></i></a>
                             <a href=""><i class="fa fa-shopping-cart"></i></a>

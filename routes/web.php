@@ -5,6 +5,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\LojaController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\UserController;
 
 /*
@@ -39,9 +40,9 @@ Route::get('/perfil', function () {
     return view('frontoffice/perfil');
 })->name('perfil');
 
-// Route::get('/checkout', function () {
-//     return view('frontoffice/checkout');
-// })->name('checkout');
+Route::get('/order/confirmation', function () {
+    return view('frontoffice/orderConfirmation');
+})->name('loja.orderConfirmation');
 
 
 
@@ -61,3 +62,10 @@ Route::post('/cart', [CartController::class, 'addCart'])->name('loja.addCart');
 Route::post('/cart/remove', [CartController::class, 'removeCart'])->name('loja.removeCart');
 Route::post('/cart/update', [CartController::class, 'updateCart'])->name('loja.updateCart');
 Route::get('/cart/clean', [CartController::class, 'cleanCart'])->name('loja.cleanCart');
+
+Route::post('/order/add', [OrderController::class, 'addOrder'])->name('loja.addOrder');
+
+// Route::get('/order/confirmation', [OrderController::class, 'orderConfirmation'])->name('loja.orderConfirmation');
+// Route::get('/cart/order', [CartController::class, 'order'])->name('loja.order');
+
+// Route::get('/cart/discount', [CartController::class, 'cleanCart'])->name('loja.cleanCart');
