@@ -64,14 +64,15 @@
                         <i class="fas fa-moon"></i>
                     </div>
                 </div>
-
-                <ul class="right-menu">
-                    <li>
-                        <a href="#" id="cart">
-                            <text onclick=toggleCart() class="fa fa-shopping-cart">
-                        </a>
-                    </li>
-                </ul>
+                @if (\Cart::getContent()->isNotEmpty() && \Cart::getContent()->count()>0)
+                    <ul class="right-menu">
+                        <li>
+                            <a href="#" id="cart">
+                                <text onclick=toggleCart() class="fa fa-shopping-cart">
+                            </a>
+                        </li>
+                    </ul>
+                @endif
     
             </div>
           </nav>
@@ -82,12 +83,25 @@
                 <i class="fa fa-shopping-cart cart-icon"></i>
                 <div class="shopping-cart-total">
                   <span class="lighter-text">Total:</span>
-                  <span class="main-color-text">2.229,97€</span>
+                  {{-- <span class="main-color-text">{{ \Cart::getContent()->count()}}</span> --}}
+                  @if (Cart::getContent()->isNotEmpty() && Cart::getContent()->count()>0)
+                    <span class="main-color-text">{{ number_format(Cart::getTotal(), 2,',', '.') }}€</span>
+                @endif
                 </div>
               </div> <!--end shopping-cart-header -->
           
               <ul class="shopping-cart-items">
-                <li class="clearfix">
+                @if (Cart::getContent()->isNotEmpty() && Cart::getContent()->count()>0)
+                    @foreach (Cart::getContent() as $cart)
+                        <li class="clearfix">
+                            <img src="{{ asset('assets/' . $cart->attributes->image) }}" width="5" alt="{{$cart->name}}" />
+                            <span class="item-name">{{$cart->name}}</span>
+                            <span class="item-price">{{ number_format($cart->price, 2,',', '.') }}€</span>
+                            <span class="item-quantity">Quantidade: {{$cart->quantity}}</span>
+                        </li>
+                    @endforeach
+                @endif
+                {{-- <li class="clearfix">
                   <img src="assets/PANEL_FACHADA_FIJACIONES_OCULTAS.png" alt="item1" />
                   <span class="item-name">Pav. Flutuante</span>
                   <span class="item-price">849,99€</span>
@@ -106,7 +120,7 @@
                   <span class="item-name">Cimento</span>
                   <span class="item-price">129,99€</span>
                   <span class="item-quantity">Quantidade: 01</span>
-                </li>
+                </li> --}}
               </ul>
           
               <a href={{ route('loja.cart') }} class="button">Checkout</a>

@@ -153,15 +153,16 @@ small {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin-left: 10px;
 }
 
 .add-to-cart {
+    margin-top: 10px;
     background-color: var(--clr-add-bt);
     transition: var(--transition);
 }
 
 .buy-now {
-    margin-left: 10px;
     background-color: var(--clr-buy-bt);
     transition: var(--transition);
 }
@@ -256,7 +257,8 @@ small {
 }
 
 .specs-container {
-    overflow-x: auto; /* Adiciona barra de rolagem horizontal se necessário */
+    overflow-x: auto;
+    /* Adiciona barra de rolagem horizontal se necessário */
 }
 
 .specs-table {
@@ -274,5 +276,6 @@ small {
 }
 
 .specs-table tr:last-child td {
-    border-bottom: none; /* Remove a borda inferior da última linha */
+    border-bottom: none;
+    /* Remove a borda inferior da última linha */
 }

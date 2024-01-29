@@ -46,23 +46,26 @@ const countdownIds = [
 
 // Função para atualizar um countdown específico
 function updateCountdown(index, elementId) {
-    const now = new Date().getTime();
-    const timeLeft = endDates[index] - now;
+    const element = document.getElementById(elementId);
+    if (element) {
+        const now = new Date().getTime();
+        const timeLeft = endDates[index] - now;
 
-    const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-    const hours = Math.floor(
-        (timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-    );
-    const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+        const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+            (timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
 
-    document.getElementById(
-        elementId
-    ).innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+        element.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
 
-    if (timeLeft < 0) {
-        clearInterval(interval);
-        document.getElementById(elementId).innerHTML = "Tempo terminado";
+        if (timeLeft < 0) {
+            clearInterval(intervals);
+            element.innerHTML = "Tempo terminado";
+        }
+    } else {
+        console.error(`Elemento com ID '${elementId}' não encontrado.`);
     }
 }
 

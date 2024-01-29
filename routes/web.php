@@ -57,4 +57,7 @@ Route::get('/loja', [LojaController::class, 'index'])->name('loja.index');
 Route::get('/item/{id}', [LojaController::class, 'details'])->name('loja.details');
 
 Route::get('/cart', [CartController::class, 'getCart'])->name('loja.cart');
-Route::post('/cart', [CartController::class, 'addCart'])->name('loja.cart.add');
+Route::post('/cart', [CartController::class, 'addCart'])->name('loja.addCart');
+Route::post('/cart/remove', [CartController::class, 'removeCart'])->name('loja.removeCart');
+Route::post('/cart/update', [CartController::class, 'updateCart'])->name('loja.updateCart');
+Route::get('/cart/clean', [CartController::class, 'cleanCart'])->name('loja.cleanCart');

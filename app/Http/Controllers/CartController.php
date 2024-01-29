@@ -9,9 +9,10 @@ class CartController extends Controller
 {
     public function getCart()
     {
-        $items = Cart::getContent();
+        $cart = Cart::getContent();
+        $totalPrice = Cart::getTotal();
         // dd($items);
-        return view('frontoffice/checkout', compact('items'));
+        return view('frontoffice/checkout', compact('cart', 'totalPrice'));
     }
 
     public function addCart(Request $request)
@@ -26,6 +27,29 @@ class CartController extends Controller
             ]
         ]);
 
-        return redirect()->route('loja.cart')->with('sucesso', 'Producto adicionado ao carrinho com sucesso');
+        return redirect()->route('loja.cart')->with('success', 'Foi adicionado um novo artigo ao seu carrinho!');
+    }
+
+    public function removeCart(Request $request)
+    {
+        Cart::remove($request->id);
+        return redirect()->route('loja.cart')->with('success', 'Artigo removido do carrinho com sucesso!');
+    }
+
+    public function updateCart(Request $request)
+    {
+        Cart::update($request->id, [
+            'quantity' => [
+                'relative' => false,
+                'value' => $request->quantity
+            ]
+        ]);
+        return redirect()->route('loja.cart')->with('success', 'Artigo do carrinho atualizado com sucesso!');
+    }
+
+    public function cleanCart(Request $request)
+    {
+        Cart::clear();
+        return redirect()->route('loja.cart')->with('info', 'O carrinho ficou vazio!');
     }
 }

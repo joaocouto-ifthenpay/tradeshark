@@ -19,18 +19,18 @@
                 <h1>{{ $item->item_name }}</h1>
                 <p class="description">{{ $item->description }}</p>
                 <p class="price">{{ number_format($item->price, 2,',', '.') }}€<!--1.599,<small>99€</small>--></p>
-                <div class="quantity">
-                  <form action="{{ route('loja.cart.add')}}" method="POST" enctype="multipart/form-data">
+                <div class="quantity text-center">
+                  <form action="{{ route('loja.addCart')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <input type="hidden" name="id" value="{{$item->id}}">
                     <input type="hidden" name="name" value="{{$item->item_name}}">
                     <input type="hidden" name="price" value="{{$item->price}}">
-                    <input type="number" name="quantity" value="{{$item->stock_quantity}}">
+                    <input type="number" name="quantity" value="1" min="1" class="form-control mr-2 quantity-input" >
                     <input type="hidden" name="image" value="{{$item->image_url}}">
-                    <label for="quantity"></label>
-                    {{-- <input type="number" id="quantity" name="quantity" min="1" value="1"> --}}
-                    <button class="add-to-cart"><i class="fas fa-shopping-cart"></i> Adicionar</button>
-                    <button class="buy-now">Comprar Já</button>
+                    <p>
+                      <button class="add-to-cart"><i class="fas fa-shopping-cart"></i> Adicionar</button>
+                      <button class="buy-now">Comprar Já</button>
+                    </p>
                   </form>
                 </div>
 

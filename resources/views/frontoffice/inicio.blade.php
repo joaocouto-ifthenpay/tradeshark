@@ -86,16 +86,18 @@
         <!-- ............. -->
         <h1 class="product-card_tit">Pacotes</h1>
         <div class="geral_product-card">
+            
             <div class="product-card">
                 <div class="badge">Destaque
                     <i class="fas fa-fire"></i>
                 </div>
                 <div class="product-tumb">
-                    <img src="{{ asset('assets/PANEL_FACHADA_FIJACIONES_OCULTAS.png') }}" alt="">
+                    <img src="assets/PANEL_FACHADA_FIJACIONES_OCULTAS.png" alt="">
                 </div>
+                <a href="pavimento.html" class="product-link">
                 <div class="product-details">
                     <span class="product-catagory">Obras</span>
-                    <h4><a href="">Pav. Flutuante</a></h4>
+                    <h5>Pav. Flutuante</h5>
                     <p>Material resistente e versátil para construção.</p>
                     <div class="product-bottom-details">
                         <div class="product-price"><small>2.560€</small>1.780€</div>
@@ -105,8 +107,12 @@
                         </div>
                     </div>
                 </div>
+                </a>
+                    <div class="countdown_label  bg-info">
+                        <div id="countdown1" class="countdown"></div>
+                    </div>
                 <div class="progress">
-                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 21%">21%</div>
+                    <div id="progress-bar" class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 21%">21%</div>
                 </div>
             </div>
 
@@ -115,11 +121,11 @@
                     <i class="fas fa-fire"></i>
                 </div>
                 <div class="product-tumb">
-                    <img src="{{ asset('assets/Bobina-1-1-1024x1024.png') }}" alt="">
+                    <img src="assets/Bobina-1-1-1024x1024.png" alt="">
                 </div>
                 <div class="product-details">
                     <span class="product-catagory">Obras</span>
-                    <h4><a href="">Cabo de Rede</a></h4>
+                    <h5><a href="">Cabo de Rede</a></h5>
                     <p>Solução eficiente para instalação de redes de comunicação.</p>
                     <div class="product-bottom-details">
                         <div class="product-price"><small>2.560€</small>1.780€</div>
@@ -128,6 +134,9 @@
                             <a href=""><i class="fa fa-shopping-cart"></i></a>
                         </div>
                     </div>
+                </div>
+                <div class="countdown_label  bg-info">
+                    <div id="countdown2" class="countdown"></div>
                 </div>
                 <div class="progress">
                     <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 15%">15%</div>
@@ -139,11 +148,11 @@
                     <i class="fas fa-fire"></i>
                 </div>
                 <div class="product-tumb">
-                    <img src="{{ asset('assets/cimento-cimpor.png') }}" alt="">
+                    <img src="assets/cimento-cimpor.png" alt="">
                 </div>
                 <div class="product-details">
                     <span class="product-catagory">Obras</span>
-                    <h4><a href="">Cimento</a></h4>
+                    <h5><a href="">Cimento</a></h5>
                     <p>Fundamento essencial para diversas etapas da construção.</p>
                     <div class="product-bottom-details">
                         <div class="product-price"><small>2.560€</small>1.780€</div>
@@ -152,6 +161,9 @@
                             <a href=""><i class="fa fa-shopping-cart"></i></a>
                         </div>
                     </div>
+                </div>
+                <div class="countdown_label  bg-info">
+                    <div id="countdown3" class="countdown"></div>
                 </div>
                 <div class="progress">
                     <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 1%">1%</div>
@@ -163,11 +175,11 @@
                     <i class="fas fa-fire"></i>
                 </div>
                 <div class="product-tumb">
-                    <img src="{{ asset('assets/blocos-de-Concreto.png.png') }}" alt="">
+                    <img src="assets/blocos-de-Concreto.png.png" alt="">
                 </div>
                 <div class="product-details">
                     <span class="product-catagory">Obras</span>
-                    <h4><a href="">Tijolos de betão</a></h4>
+                    <h5><a href="">Tijolos de betão</a></h5>
                     <p>Componente robusto para estruturas duradouras.</p>
                     <div class="product-bottom-details">
                         <div class="product-price"><small>2.560€</small>1.780€</div>
@@ -176,6 +188,9 @@
                             <a href=""><i class="fa fa-shopping-cart"></i></a>
                         </div>
                     </div>
+                </div>
+                <div class="countdown_label  bg-info">
+                    <div id="countdown4" class="countdown"></div>
                 </div>
                 <div class="progress">
                     <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%">75%</div>
@@ -189,11 +204,11 @@
                     <i class="fas fa-fire"></i>
                 </div>
                 <div class="product-tumb">
-                    <img src="{{ asset('assets/Tinta-Plastica-Supercryl-1.png') }}" alt="">
+                    <img src="assets/Tinta-Plastica-Supercryl-1.png" alt="">
                 </div>
                 <div class="product-details">
                     <span class="product-catagory">Obras</span>
-                    <h4><a href="">Tinta Plástica</a></h4>
+                    <h5><a href="">Tinta Plástica</a></h5>
                     <p>Revestimento ideal para ambientes internos.</p>
                     <div class="product-bottom-details">
                         <div class="product-price"><small>2.560€</small>1.780€</div>
@@ -202,6 +217,9 @@
                             <a href=""><i class="fa fa-shopping-cart"></i></a>
                         </div>
                     </div>
+                </div>
+                <div class="countdown_label  bg-info">
+                    <div id="countdown5" class="countdown"></div>
                 </div>
                 <div class="progress">
                     <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 97%">97%</div>
@@ -213,11 +231,11 @@
                     <i class="fas fa-fire"></i>
                 </div>
                 <div class="product-tumb">
-                    <img src="{{ asset('assets/tijolo.png') }}" alt="">
+                    <img src="assets/tijolo.png" alt="">
                 </div>
                 <div class="product-details">
                     <span class="product-catagory">Obras</span>
-                    <h4><a href="">Tijolos</a></h4>
+                    <h5><a href="">Tijolos</a></h5>
                     <p>Elemento chave na construção de paredes e estruturas.</p>
                     <div class="product-bottom-details">
                         <div class="product-price"><small>2.560€</small>1.780€</div>
@@ -226,6 +244,9 @@
                             <a href=""><i class="fa fa-shopping-cart"></i></a>
                         </div>
                     </div>
+                </div>
+                <div class="countdown_label  bg-info">
+                    <div id="countdown6" class="countdown"></div>
                 </div>
                 <div class="progress">
                     <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 50%">50%</div>
@@ -237,11 +258,11 @@
                     <i class="fas fa-fire"></i>
                 </div>
                 <div class="product-tumb">
-                    <img src="{{ asset('assets/pladur-n.png') }}" alt="">
+                    <img src="assets/pladur-n.png" alt="">
                 </div>
                 <div class="product-details">
                     <span class="product-catagory">Obras</span>
-                    <h4><a href="">Pladur</a></h4>
+                    <h5><a href="">Pladur</a></h5>
                     <p>Material leve e versátil para divisórias e acabamentos.</p>
                     <div class="product-bottom-details">
                         <div class="product-price"><small>2.560€</small>1.780€</div>
@@ -250,6 +271,9 @@
                             <a href=""><i class="fa fa-shopping-cart"></i></a>
                         </div>
                     </div>
+                </div>
+                <div class="countdown_label  bg-info">
+                    <div id="countdown7" class="countdown"></div>
                 </div>
                 <div class="progress">
                     <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 23%">23%</div>
@@ -261,11 +285,11 @@
                     <i class="fas fa-fire"></i>
                 </div>
                 <div class="product-tumb">
-                    <img src="{{ asset('assets/3-7.png') }}" alt="">
+                    <img src="assets/3-7.png" alt="">
                 </div>
                 <div class="product-details">
                     <span class="product-catagory">Obras</span>
-                    <h4><a href="">Tintas de cor</a></h4>
+                    <h5><a href="">Tintas de cor</a></h5>
                     <p>Opção decorativa para ambientes diversos.</p>
                     <div class="product-bottom-details">
                         <div class="product-price"><small>2.560€</small>1.780€</div>
@@ -274,6 +298,9 @@
                             <a href=""><i class="fa fa-shopping-cart"></i></a>
                         </div>
                     </div>
+                </div>
+                <div class="countdown_label  bg-info">
+                    <div id="countdown8" class="countdown"></div>
                 </div>
                 <div class="progress">
                     <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 45%">45%</div>
