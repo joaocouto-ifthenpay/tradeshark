@@ -24,149 +24,67 @@ class OrderController extends Controller
                 'price' => $request->price,
             ];
 
-            // $this->processPayment($payload);
-            // die('FIM2');
+            $this->processPayment($payload);
+
             return redirect()->route('loja.orderConfirmation')->with('success', 'O seu pagamento através de Cartão de Crédito foi realizado com sucesso!');
         } else {
-            return redirect()->route('loja.orderConfirmation', ['id' => $request->input('id')])->with('error', ' Ocorreu um erro enquanto finalizava a encomenda');
+            return redirect()->route('loja.orderConfirmation')->with('error', ' Ocorreu um erro enquanto finalizava a encomenda');
         }
-        dd($request->input('radios'));
-        // var_dump($request->input('radios'));
-
-        // var_dump($request->price);
-
-        // die();
-        // Cart::add([
-        //     'id' => $request->id,
-        //     'name' => $request->name,
-        //     'price' => $request->price,
-        //     'quantity' => $request->quantity,
-        //     'attributes' => [
-        //         'image' => $request->image
-        //     ]
-        // ]);
-
-        // if ($request->has('action') && $request->input('action') === 'buy-now') {
-        //     return redirect()->route('loja.cart')->with('success', 'Foi adicionado um novo artigo ao seu carrinho!');
-        // } else {
-        //     return redirect()->route('loja.details', ['id' => $request->input('id')])->with('success', 'Foi adicionado um novo artigo ao seu carrinho!');
-        // }
     }
 
+    private function processPayment($payload)
+    {
+        $requestBody = [
+            "orderId" => $payload['orderId'],
+            "amount" => $payload['price'], // Usa a variável $payload como valor do amount
+            "successUrl" => "http://127.0.0.1:8000/order/confirmation?status=success",
+            "errorUrl" => "http://127.0.0.1:8000/order/confirmation?status=error",
+            "cancelUrl" => "http://127.0.0.1:8000/order/confirmation?status=cancel",
+            "language" => "pt"
+        ];
 
-    // private function processPayment($payload)
-    // {
-    //     // $data = [
-    //     //     "orderId" => 'order_' . $payload['orderId'],
-    //     //     "amount" => $payload['price'],
-    //     //     "successUrl" => "http://127.0.0.1:8000/order/confirmation?status=success",
-    //     //     "errorUrl" => "http://127.0.0.1:8000/order/confirmation?status=error",
-    //     //     "cancelUrl" => "http://127.0.0.1:8000/order/confirmation?status=cancel",
-    //     //     "language" => "pt"
-    //     // ];
-    //     // echo '<pre>';
-    //     // var_dump($data);
-    //     // die();
-    //     // $ch = curl_init('https://ifthenpay.com/api/creditcard/init/AAA-000000');
+        $curl = curl_init();
 
-    //     // $options = [
-    //     //     CURLOPT_RETURNTRANSFER => true,
-    //     //     CURLOPT_CUSTOMREQUEST => 'POST',
-    //     //     CURLOPT_HTTPHEADER => ['Content-Type: application/json'],
-    //     // ];
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => 'https://ifthenpay.com/api/creditcard/init/' . env('CCARD_KEY'),
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_POSTFIELDS => json_encode($requestBody),
+            CURLOPT_HTTPHEADER => array(
+                'Content-Type: application/json',
+                'Cookie: ARRAffinity=57d5258c349103c74d104ee6315d37036a8c6af8b0f5efa690b26d2a1fdd2129; ARRAffinitySameSite=57d5258c349103c74d104ee6315d37036a8c6af8b0f5efa690b26d2a1fdd2129; ASP.NET_SessionId=kwsscufkx4qrmpasm0rrldlz'
+            ),
+        ));
 
-    //     // // Verifica se há payload antes de adicionar CURLOPT_POSTFIELDS
-    //     // if (!empty($data)) {
-    //     //     $options[CURLOPT_POSTFIELDS] = http_build_query($data);
-    //     // }
+        $response = curl_exec($curl);
+        curl_close($curl);
 
-    //     // curl_setopt_array($ch, $options);
+        $data = json_decode($response, true);
 
-    //     // $response = curl_exec($ch);
-    //     // $httpStatus = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        if ($data['Message'] === 'Success') {
+            // Verifica se o status é "0" (transação bem-sucedida)
+            if ($data['Status'] === '0') {
+                // Aqui você pode redirecionar o usuário para a URL de pagamento
+                $paymentUrl = $data['PaymentUrl'];
+                header('Location: ' . $paymentUrl);
+                exit;
 
-    //     // if (curl_errno($ch)) {
-    //     //     throw new \Exception('cURL Error: ' . curl_error($ch));
-    //     // }
-
-    //     // curl_close($ch);
-
-    //     $url = 'https://ifthenpay.com/api/creditcard/init/AAA-000000';
-    //     $data = [
-    //         "orderId" => 'order_45678',
-    //         "amount" =>  "11.55",
-    //         // "successUrl" => "https://127.0.0.1:8000/order/confirmation?status=success",
-    //         // "errorUrl" => "https://127.0.0.1:8000/order/confirmation?status=error",
-    //         // "cancelUrl" => "https://127.0.0.1:8000/order/confirmation?status=cancel",
-    //         "successUrl" => "https://ifthenpay.com/",
-    //         "errorUrl" => "https://ifthenpay.com/",
-    //         "cancelUrl" => "https://ifthenpay.com/",
-    //         "language" => "pt"
-    //     ];
-    //     // echo '<pre>';
-    //     // var_dump($data);
-    //     // die();
-    //     $curl = curl_init();
-    //     curl_setopt_array($curl, [
-    //         CURLOPT_URL => $url,
-    //         CURLOPT_RETURNTRANSFER => true,
-    //         CURLOPT_ENCODING => '',
-    //         CURLOPT_MAXREDIRS => 10,
-    //         CURLOPT_TIMEOUT => 0,
-    //         CURLOPT_FOLLOWLOCATION => true,
-    //         CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-    //         CURLOPT_CUSTOMREQUEST => 'POST',
-    //         CURLOPT_POSTFIELDS => http_build_query($data), // Transforma os dados do corpo em uma string de consulta
-    //     ]);
-
-    //     $response = curl_exec($curl);
-
-    //     if (curl_errno($curl)) {
-    //         $errorMessage = curl_error($curl);
-    //     }
-    //     echo '<pre>';
-    //     var_dump($errorMessage ?? null);
-    //     var_dump($response);
-    //     die();
-
-    //     curl_close($curl);
-
-    //     if ($response) {
-    //         // Faça algo com a resposta, se necessário
-    //     }
-
-
-
-
-    //     // Verifica se a requisição foi bem-sucedida
-    //     if ($response->successful()) {
-
-    //         die('aqui 0');
-    //         // A resposta foi bem-sucedida, você pode acessar os dados da resposta assim:
-    //         $responseData = $response->json(); // Se a resposta for JSON
-    //         // Ou você pode usar $response->body() para acessar o corpo da resposta diretamente
-
-
-    //         $data = json_decode($responseData, true);
-
-    //         if ($data['Status'] == '0') {
-    //             // Se o status for "0" (sucesso), redirecionar o usuário para a URL de pagamento
-    //             // return redirect($data['PaymentUrl']);
-    //             var_dump($data['PaymentUrl']);
-    //             die();
-    //             return redirect($data['PaymentUrl']);
-    //         } else {
-    //             // Se o status for diferente de "0", houve um erro, você pode manipulá-lo conforme necessário
-    //             $errorMessage = $data['Message'];
-    //             // Por exemplo, você pode redirecionar o usuário de volta com uma mensagem de erro
-    //             return redirect()->back()->with('error', $errorMessage);
-    //         }
-    //     } else {
-    //         // A requisição falhou
-    //         $statusCode = $response->status(); // Obter o código de status da resposta
-    //         $errorMessage = $response->body(); // Obter a mensagem de erro, se houver
-    //     }
-    // }
+                // return redirect($paymentUrl);
+            } else {
+                return redirect()->route('loja.orderConfirmation')->with('error', ' Ocorreu um erro enquanto finalizava a encomenda');
+            }
+        } else {
+            // Se a mensagem não for bem-sucedida, houve um erro na resposta
+            // Você pode tratar isso conforme necessário
+            // Por exemplo, exibindo uma mensagem genérica de erro para o usuário
+            return redirect()->route('loja.orderConfirmation')->with('error', ' Ocorreu um erro enquanto finalizava a encomenda');
+        }
+    }
 
 
     private function orderConfirmation(Request $request)

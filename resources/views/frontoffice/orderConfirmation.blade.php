@@ -12,9 +12,17 @@
       <div class="alert alert-danger" role="alert">
         {{$msg}}
       </div>
+      @elseif($msg = Session::get('cancel'))
+      <div class="alert alert-warning" role="alert">
+        {{$msg}}
+      </div>
       @elseif($msg = Session::get('success'))
       <div class="alert alert-success" role="alert">
         {{$msg}}
+      </div>
+      @else
+      <div class="alert alert-success" role="alert">
+        A sua encomenda foi concluída com sucesso!
       </div>
       @endif
 
